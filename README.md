@@ -12,6 +12,10 @@ NestJS micro service with default protocol ( TCP ) and PostgreSQL database.
 ## Installation
 
 ```bash
+# Copy and config environment variables follow the .env.example
+cp .env.example .env
+
+# Install all dependencies using yarn or pnpm package manager
 yarn install
 ```
 
