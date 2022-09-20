@@ -13,8 +13,6 @@ NestJS micro service with default protocol ( TCP ) and PostgreSQL database.
 
 ```bash
 yarn install
-# or
-pnpm install
 ```
 
 ## Running the app
@@ -22,18 +20,12 @@ pnpm install
 ```bash
 # development
 yarn start
-# or
-pnpm start
 
 # watch mode
 yarn start:dev
-# or
-pnpm start:dev
 
 # production mode
 yarn start:prod
-# or
-pnpm run start:prod
 ```
 
 ## Test
@@ -41,18 +33,12 @@ pnpm run start:prod
 ```bash
 # unit tests
 yarn test
-# or
-pnpm test
 
 # e2e tests
 yarn test:e2e
-# or
-pnpm test:e2e
 
 # test coverage
 yarn test:cov
-# or
-pnpm test:cov
 ```
 
 ## Create this project
@@ -66,3 +52,12 @@ git clone npx degit https://github.com/ravuthz/nestjs-micro-service micro_produc
 
 NOTE:
 - The **micro_product** the new project name, default is **nestjs-micro-service**
+- The ``pnpm`` also support, just replace ``pnpm`` instead of ``yarn`` 
+
+```bash
+  # Example
+  
+  pnpm install
+  
+  pnpm start:dev
+```
