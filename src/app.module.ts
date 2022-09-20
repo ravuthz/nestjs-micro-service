@@ -10,7 +10,7 @@ import { HealthModule } from './health/health.module';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      cache: true,
+      cache: false,
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],

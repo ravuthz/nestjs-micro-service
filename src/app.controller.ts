@@ -1,5 +1,8 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Logger } from '@nestjs/common';
+import { MessagePattern } from '@nestjs/microservices';
 import { AppService } from './app.service';
+
+const logger = new Logger('AppController');
 
 @Controller()
 export class AppController {
@@ -7,6 +10,14 @@ export class AppController {
 
   @Get()
   getHello(): string {
-    return this.appService.getHello();
+    const data = this.appService.getHello();
+    logger.debug(`AppController.getHello() => ${data}`);
+    return data;
+  }
+
+  @MessagePattern({ cmd: 'hello' })
+  cmdHello(data: string): string {
+    logger.debug(`AppController.cmdHello(${data}) => 'hello ${data}'`);
+    return `hello ${data}`;
   }
 }

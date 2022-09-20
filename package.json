@@ -1,10 +1,10 @@
 {
   "name": "nestjs-micro-service",
-  "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "version": "1.0.0",
+  "description": "NestJS Micro Service",
+  "author": "Vannaravuth Yo <ravuthz@gmail.com> (https://ravuthz.github.io)",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
@@ -18,12 +18,14 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "client": "ts-node ./src/client.ts --project ../tsconfig.json"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
     "@nestjs/config": "^2.2.0",
     "@nestjs/core": "^9.0.0",
+    "@nestjs/microservices": "^9.1.1",
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/terminus": "^9.1.1",
     "@nestjs/typeorm": "^9.0.1",
