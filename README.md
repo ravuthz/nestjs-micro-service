@@ -45,13 +45,22 @@ yarn test:e2e
 yarn test:cov
 ```
 
-## Create this project
+## Clone this project as default microservice ( TCP )
 ```bash
 npx degit https://github.com/ravuthz/nestjs-micro-service micro_product
 ```
 
 ```bash
 git clone npx degit https://github.com/ravuthz/nestjs-micro-service micro_product
+```
+
+## Clone this project as RabbitMQ microservice ( RMQ )
+```bash
+npx degit https://github.com/ravuthz/nestjs-micro-service#rabbitmq micro_category
+```
+
+```bash
+git clone --single-branch --branch rabbitmq https://github.com/ravuthz/nestjs-micro-service
 ```
 
 NOTE:
