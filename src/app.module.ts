@@ -1,16 +1,27 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
+import * as Joi from 'joi';
 import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { HealthModule } from './health/health.module';
+import { RabbitmqModule } from './rabbitmq/rabbitmq.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
+      cache: true,
       isGlobal: true,
-      cache: false,
+      expandVariables: true,
+      validationSchema: Joi.object({
+        NODE_ENV: Joi.string()
+          .valid('development', 'staging', 'production')
+          .default('development'),
+        PORT: Joi.number().default(3000),
+        MS_PORT: Joi.number().default(3001),
+        MS_URL: Joi.string().default(''),
+      }),
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
@@ -29,6 +40,7 @@ import { HealthModule } from './health/health.module';
       },
     }),
     HealthModule,
+    RabbitmqModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,8 +1,9 @@
 import { Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
-import { MicroserviceOptions, Transport } from '@nestjs/microservices';
+import { MicroserviceOptions } from '@nestjs/microservices';
 import { AppModule } from './app.module';
+import { getMicroSeriveOptions, MS_API_GATWAY } from './shared';
 
 const logger = new Logger('NestApplication');
 
@@ -13,13 +14,9 @@ async function bootstrap() {
 
   const config = app.get<ConfigService>(ConfigService);
 
-  await app.connectMicroservice<MicroserviceOptions>({
-    transport: Transport.TCP,
-    options: {
-      host: '127.0.0.1',
-      port: config.get('MS_PORT', 3001),
-    },
-  });
+  await app.connectMicroservice<MicroserviceOptions>(
+    getMicroSeriveOptions(MS_API_GATWAY),
+  );
 
   app.startAllMicroservices();
 
